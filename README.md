@@ -6,17 +6,82 @@ A workshop code collection that can be used in version 3.x
 
 ### Functions / Prototypes
 
-- `equals(a, b)`: Boolean
+- `equals(a, b[, c[, ...]])`: Boolean  
+  ```js
+  function equals(a, b) {
+    // ...
+  }
+  ```
+  - Notes
+    - Attempt to allow multiple arguments.  
+      `arguments` or `...args` can be used
   - Applies to:
+    - Array  
+      ```js
+      // Static
+      Array.equals = function(a, b) {
+        if(a.length !== b.length) { return false; }
+        for(let i = this.length; i--;) {
+          if(a[i] !== b[i]) { return false; }
+        }
+        return true;
+      }
+      
+      // Prototype
+      Array.prototype.equals = function(arr) {
+        if(this.length !== arr.length) { return false; }
+        for(let i = this.length; i--;) {
+          if(this[i] !== arr[i]) { return false; }
+        }
+        return true;
+      } 
+      ```
+      - `Array.equals([1, 2, 3], ['1', '2', '3']) // false` - Static
+      - `[1, 2, 3].equals(['1', '2', '3']) // false` - Prototype
+      - `[1, 2, 3].equals('1', '2', '3') // false` - Prototype
     - Math
+      ```ts
+      Math.equals = function(a : Number, b : Number) : Boolean {
+        return !(isNaN(a) && isNaN(b)) && (a === b);
+      }
+      ```
       - `Math.equals(4, 5)` - Static
     - Number
+      ```ts
+      // Static
+      Number.equals = function(...numbers) {
+        
+      }
+      
+      // Prototype
+      Number.prototype.equals = function(num) {
+        return Math.equals(this, num);
+      }
+      ```
       - `Number.equals(1, 1)`- Static
       - `1.equals(1)` - Prototype
     - Object
+      ```js
+      Object.equals = function(a, b) {
+        // ...
+      }
+      
+      Object.prototype.equals = function(obj) {
+        // ...
+      }
+      ```
       - `Object.equals({a:1}, {b:2}[, {c:3}[, ...]])` - Static
       - `{a:1}.equals({b:2}[, {c:3}[, ...]])` - Prototype
     - String
+      ```js
+      String.equals = function(a, b) {
+        return Array.equals(a, b);
+      }
+      
+      String.prototype.equals = function(a) {
+        return Array.prototype.equals.call(this, a);
+      }
+      ```
       - `String.equals("1", 1.toString(10))` - Static
       - `"1".equals(1.toString(10))` - Prototype
 - `format(a : String [, b : *[, c : *[, ...]]])`: String
