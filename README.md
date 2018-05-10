@@ -207,5 +207,6 @@ Conflicts exists in file extensions.*
 
 ## References
 
-[Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-[JavaScript Extensions](https://github.com/salsanfilippo/js-extensions)
+[Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)  
+[JavaScript Extensions](https://github.com/salsanfilippo/js-extensions)  
+[Prototype Extensions](https://github.com/magnaar/prototype-extension/blob/master/object-extension.js)
