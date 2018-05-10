@@ -19,6 +19,11 @@ A workshop code collection that can be used in version 3.x
     - String
       - `String.equals("1", 1.toString(10))` - Static
       - `"1".equals(1.toString(10))` - Prototype
+- `format(a : String [, b : *[, c : *[, ...]]])`: String
+  - Applies to:
+    - String
+      - `String.format("{0}, {1}", "Discord", "b1nzy")` - Static
+      - `"{0}, {1}".format("Discord", "b1nzy")` - Prototype
 - `gcd(...x: Number[])`: String
   - Applies to:
     - Math
@@ -30,16 +35,19 @@ A workshop code collection that can be used in version 3.x
     - Object
       - `Object.merge({a:1}, {b:2}, {c:3})` - Static
       - `{a:1}.merge({b:2}, {c:3})` - Prototype
-- `range(x, y)`: []
+- `range(start[, end[, step])`: Number\[]
   - Applies to:
     - Math
+      - `Math.range(5) // [0, 1, 2, 3, 4]` - Static
       - `Math.range(5, 20) // [5, 6, ..., 18, 19]` - Static
+      - `Math.range(5, 20, 5) // [5, 10, 15]` - Static
     - Number
+      - `Number.range(5) // [0, 1, 2, 3, 4]` - Static
       - `Number.range(5, 20) // [5, 6, ..., 18, 19]` - Static
-      - `5.range(20) // [5, 6, ..., 19, 20]` - Prototype  
-        5 would act as the start, 19 would act as the end.
-      - `5.range()` - Prototype  
-        0 would act as the start, 4 would act as the end.
+      - `Number.range(5, 20, 5) // [5, 10, 15]` - Static
+      - `5.range() // [0, 1, 2, 3, 4]` - Prototype
+      - `5.range(20) // [5, 6, ..., 19, 20]` - Prototype
+      - `5.range(20, 5) // [5, 10, 15]` - Prototype
 
 ### Classes
 
@@ -53,12 +61,37 @@ Parent folder paths will be removed.
 - Considerations to make a package manager for the workshop as a way to improve response times.
 
 ## Package imports (scripts)
+*None of the below are guaranteed to stay.*
 
+- bluebird
+- cli-table
+- chance
+- cheerio?
+- fuzzy
+- inquirer *equivalent for discord*
+- jimp
 - lodash
+- mathjs
+- snekfetch?
+- underscore
+
+- Restricted modules
+  - *our version of the discord client*
+  - *our version of a database driver*
 
 ## Package imports (pages)
+*None of the below are guaranteed to stay.*
 
-- 
+- axios
+- jquery
+
+## Package imports (debug)
+*None of the below are guaranteed to stay.*
+
+- babel
+- eslint
+- mocha
+- semver
 
 ## Script compilers
 *None of the below are guaranteed to stay.  
@@ -97,6 +130,7 @@ Conflicts exists in file extensions.*
 
 - Angular
 - Ember
+- Ejs
 - [GrapesJS](https://github.com/artf/grapesjs) - Page Editor (like wix)
 - ReactJS
 - VueJS
