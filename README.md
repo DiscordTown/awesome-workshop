@@ -4,6 +4,23 @@ A workshop code collection that can be used in version 3.x
 
 ## Globals
 
+### Expressions
+
+- Array Swap  
+  https://stackoverflow.com/questions/16201656/how-to-swap-two-variables-in-javascript  
+  ```js
+  let a = 1, b = 2;
+  // all of the below are the same
+  console.log('Before: %i, %i', a, b);
+  console.log('Before: ' + a + ', ' + b);
+  console.log(`Before: ${a}, ${b}`);
+  
+  b = [a, a = b][0];
+  [b, a] = [a, b];
+  
+  console.log(`After: ${a}, ${b}`)
+  ```
+
 ### Functions / Prototypes
 
 - `equals(a, b[, c[, ...]])`: Boolean  
