@@ -17,6 +17,10 @@ A workshop code collection that can be used in version 3.x
   
   b = [a, a = b][0];
   [b, a] = [a, b];
+  // or you can be boring (apparently faster)
+  var c = a; // var, let, const
+  b = c;
+  a = b;
   
   console.log(`After: ${a}, ${b}`)
   ```
