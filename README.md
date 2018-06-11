@@ -70,7 +70,7 @@ A workshop code collection that can be used in version 3.x
     - Number
       ```ts
       // Static
-      Number.equals = function(...numbers) {
+      Number.equals = function(...numbers: Number[]) {
         
       }
       
@@ -95,7 +95,7 @@ A workshop code collection that can be used in version 3.x
       - `{a:1}.equals({b:2}[, {c:3}[, ...]])` - Prototype
     - String
       ```js
-      String.equals = function(a, b) {
+      String.equals = function(a: String, b: String): Boolean {
         return Array.equals(a, b);
       }
       
@@ -110,30 +110,91 @@ A workshop code collection that can be used in version 3.x
     - String
       - `String.format("{0}, {1}", "Discord", "b1nzy")` - Static
       - `"{0}, {1}".format("Discord", "b1nzy")` - Prototype
+- `format(n: Number) || formatNumber(n: Number | String)`: String
+  - Applies to:
+    - Number
+      ```ts
+      Number.format = function(n: Number): String {
+        return n.toString().replace(/(\d)(?=(\d{3})+(?!\d)/g, "$1,")
+      }
+      
+      Number.prototype.format = function(): String {
+        return Number.format.call({}, this);
+      }
+      ```
+    - String
+      ```ts
+      String.formatNumber = function(n: String | Number): String {
+        return Number.format.call({}, Number(this));
+      }
+      
+      String.prototype.formatNumber = function(): String {
+        return // not implimented
+      }
+      ```
 - `gcd(...x: Number[])`: String
   - Applies to:
     - Math
-- `isNullOrUndefined(obj)`: Boolean
+      ```ts
+      Math.gcd = function(...arr : Number[]) {
+      
+      }
+      ```
+    - Number
+      ```ts
+      Number.gcd = function() {
+        // arguments
+      }
+      
+      Number.prototype.gcd = function() {
+        // [this, ...arguments]
+      }
+      ```
+- `isNullOrUndefined(obj)` : Boolean
   - Applies to:
     - Object
-- `merge(a, b[, c[, ...]])`: Object
+- `merge(a, b[, c[, ...]])` : Object
   - Applies to:
     - Object
+      ```ts
+      Object.merge = function(...arr : Object[]) {
+        arr.reduce((prev : Object, curr : Object) => Object.assign(prev, curr), arr[1] /*: Object*/)
+      }
+      ```
       - `Object.merge({a:1}, {b:2}, {c:3})` - Static
       - `{a:1}.merge({b:2}, {c:3})` - Prototype
 - `range(start[, end[, step])`: Number\[]
   - Applies to:
     - Math
+      ```ts
+      Math.range = function(start : Number = 0, e : Number = 5, s : Number = 1) : Number[] {
+        return [...Array(end - start).keys()].map(i => i * step + start);
+      }
+      ```
       - `Math.range(5) // [0, 1, 2, 3, 4]` - Static
       - `Math.range(5, 20) // [5, 6, ..., 18, 19]` - Static
       - `Math.range(5, 20, 5) // [5, 10, 15]` - Static
     - Number
+      ```ts
+      Number.range = function(start : Number, end : Number, step : Number) : Number[] {
+        return Math.range(start, end, step);
+      }
+      
+      Number.prototype.range = function(/* start : Number, */ end : Number, step : Number) : Number {
+        // ???
+      }
+      ```
       - `Number.range(5) // [0, 1, 2, 3, 4]` - Static
       - `Number.range(5, 20) // [5, 6, ..., 18, 19]` - Static
       - `Number.range(5, 20, 5) // [5, 10, 15]` - Static
       - `5.range() // [0, 1, 2, 3, 4]` - Prototype
       - `5.range(20) // [5, 6, ..., 19, 20]` - Prototype
       - `5.range(20, 5) // [5, 10, 15]` - Prototype
+    - String
+      ```ts
+      String.range = function(start : Number = "A", end : String = "D", step : Number = 1) {}
+      String.prototype.range = function() {}
+      ```
 
 ### Classes
 
@@ -150,7 +211,6 @@ Parent folder paths will be removed.
 *None of the below are guaranteed to stay.*
 
 - bluebird
-- cli-table
 - chance
 - cheerio?
 - fuzzy
@@ -158,6 +218,7 @@ Parent folder paths will be removed.
 - jimp
 - lodash
 - mathjs
+- pureimage
 - snekfetch?
 - underscore
 
