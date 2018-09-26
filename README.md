@@ -39,7 +39,7 @@ A workshop code collection that can be used in version 3.x
   - Applies to:
     - Array  
       ```js
-      // Static
+      /** Static */
       Array.equals = function(a, b) {
         if(a.length !== b.length) { return false; }
         for(let i = this.length; i--;) {
@@ -48,7 +48,7 @@ A workshop code collection that can be used in version 3.x
         return true;
       }
       
-      // Prototype
+      /** Prototype */
       Array.prototype.equals = function(arr) {
         if(this.length !== arr.length) { return false; }
         for(let i = this.length; i--;) {
@@ -163,12 +163,22 @@ A workshop code collection that can be used in version 3.x
       ```
       - `Object.merge({a:1}, {b:2}, {c:3})` - Static
       - `{a:1}.merge({b:2}, {c:3})` - Prototype
+- `pow(n, power)` : Number
+  - Applies to:
+    - Math
+      ```ts
+      Math.pow = function (n : Number, p : Number) : Number {
+        return Array(p - 1).fill(0).reduce((c : Number) => c * n, n);
+      }
+      ```
+      - `Math.pow(2, 3) // 8` - Static
+      - `Math.pow(8, 1/3) // Error (real integer required)` - Static
 - `range(start[, end[, step])`: Number\[]
   - Applies to:
     - Math
       ```ts
-      Math.range = function(start : Number = 0, e : Number = 5, s : Number = 1) : Number[] {
-        return [...Array(end - start).keys()].map(i => i * step + start);
+      Math.range = function(start : Number = 0, end : Number = 5, step : Number = 1) : Number[] {
+        return Array(end - start / step).fill(start).map(i => i * step + start);
       }
       ```
       - `Math.range(5) // [0, 1, 2, 3, 4]` - Static
